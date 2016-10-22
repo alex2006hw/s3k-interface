@@ -1,5 +1,5 @@
-import React from 'react';
-import {FileInput} from 'react-file-input'
+// import React from 'react';
+// import {FileInput} from 'react-file-input'
 
 var NavComponent = React.createClass({
     uploadSingleFile: function(){

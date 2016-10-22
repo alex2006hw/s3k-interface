@@ -17,12 +17,10 @@ gulp.task('watch', function () {
 });
 
 gulp.task('js', ['clean:js'], function () {
-    return gulp.src(['public/**/*.jsx'])
+    return gulp.src(['public/js/**/*.jsx'])
         .pipe(sourcemaps.init())
         .pipe(plumber())
-        .pipe(babel({
-            presets: ['es2015']
-        }))
+        .pipe(react())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('public/js'));
 });
@@ -47,7 +45,7 @@ gulp.task('css', ['clean:css'], function () {
 });
 
 gulp.task('clean:css', function () {
-    return gulp.src('public/stylesheets/style.css', {
+    return gulp.src('public/style/style.css', {
         read: false
     })
         .pipe(rimraf());
