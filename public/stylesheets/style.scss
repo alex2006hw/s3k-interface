@@ -1,0 +1,72 @@
+$brand: #3592FF;
+$gray: rgba(0,0,0,0.04);
+$black: rgba(0,0,0,0.88);
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: $gray !important;
+  height: 100%;
+  padding-top: 40px;
+}
+
+.navbar-a{
+    background: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 10px;
+    font-weight: 500;
+    box-shadow: 0px 0px 2px 0px rgba($black, 0.5);
+    #logo {
+        float: right;
+        font-weight: 100;
+        padding-right: 10px;
+    }
+    .behavior-button {
+        text-transform: uppercase;
+        border-radius: 2px;
+        padding: 5px 20px;
+        cursor: pointer;
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        position: relative;
+        top: -1px;
+        user-select: none;
+        margin-left: 5px;
+        margin-right: 5px;
+        &.action {
+            background: $brand;
+            color: white;
+            transition: .1s background;
+            border: 1px darken($brand, 10%);
+            &:hover {
+                background: darken($brand, 10%);
+                box-shadow: 0px 1px 5px -2px rgba($black, 0.9);
+            }
+            &:active {
+                background: darken($brand, 20%);
+            }
+        }
+        &.default {
+            background: $gray;
+            color: $black;
+            border: 1px solid rgba($black, 0.1);
+            &:hover {
+                border: 1px solid rgba($black, 0.2);
+                background: darken($gray, 10%);
+            }
+            &:active {
+                background: rgba($black, 0.08);
+                border: 1px solid rgba($black, 0.4);
+                transition: .1s background;
+            }
+        }
+    }
+}
+
+#main {
+    .colum {
+        background: black;
+        
+    }
+}
