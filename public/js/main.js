@@ -1,7 +1,10 @@
+var React = require('react');
+var Dropzone = require('react-dropzone');
+
 var MainComponent = React.createClass({
     render: function(){
         return (
-           <div>start</div>
+           <div className='colum'>dd</div>
         );
     }
 });
