@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var AWS = require('aws-sdk');
+
+AWS.config.loadFromPath('./config.json');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
