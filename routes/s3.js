@@ -9,6 +9,19 @@ let express = require('express'),
 	Bucket = require('../models/bucket'),
 	s3api = require('../models/s3api');
 
+	const _ = require('lodash');
+	const async = require('async');
+	const validator = require('validator');
+	const request = require('request');
+	const AWS = require('aws-sdk')
+
+	let configPath = path.join(__dirname, '..', "config.json");
+	AWS.config.loadFromPath(configPath);
+
+	var s3 = new AWS.S3();
+
+	console.log('1.s3 called')
+
 // let uploader = multer({
 //     storage: multer.memoryStorage()
 // });
@@ -66,14 +79,19 @@ router.post('/bucket/:name', function(req, res){
 		res.json(favedBucket)
 	});
 });
-router.get('/bucket/all', function(req, res){
-	Bucket.find({}, function(err, buckets){
-		console.log('buckets: ', buckets)
-		if (err){
-			res.send(500)
-		}
-		res.status(200).send(buckets)
-	})
+
+router.get('/bucket/all', (req, res) => {
+	      console.log('1.api listBuckets')
+	      s3.listBuckets(function(err, data) {
+	        if (err) {
+				console.log(err, err.stack);
+			} // an error occurred
+	        else    { console.log('2.api listBuckets data: ',data);
+					res.status(200).send(data) }          // successful response
+	      }
+	  );
+	// Bucket.find({}, function(err, buckets){
+	// })
 });
 router.get('/bucket/:id', function(req, res){
 	let bucketId = req.params.id
