@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>S3 GUI</title>
+	<title>S3 GUI Bucket</title>
 	<link rel='stylesheet' href='/style/style.css' />
 	<!-- <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,24 +14,23 @@
 
 <body>
 	<div class="navbar-a">
-		<span class="logo">S3 GUI</span>
+		<span class="logo">Bucket</span>
         <form class="fileForm" action="/s3/file" method="post" enctype="multipart/form-data">
             <label for="file-upload-btn" class="behavior-button action" class="file-uploader">upload</label>
             <input class="file-upload-btn" id="file-upload-btn" name="newFile" type="file"/>
-            <span class="behavior-button default" class="createBucket" onclick="createABucket()">new folder</span>
+            <!--<span class="behavior-button default" class="createBucket" onclick="createABucket()">new folder</span>-->
+            <span class="behavior-button default" class="createBucket" onclick="deleteFolder()">delete this folder</span>
         </form>
 	</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="title">Buckets List</h1>
-                <div class="bucketList">
-                    <div class="panel panel-default bucketItem template">
-                        <div class="panel-body">
-                            <span class="bucketname"></span>
-                            <span class="filenum"></span>
-                            <span class="arrow"><i class="fa fa-arrow-right"></i></span>
-                        </div>
+                <h1 class="title">Files</h1>
+                <div class="fileList">
+                    <div class="col-xs-6 col-md-3 fileItem template">
+                        <a href="#" class="thumbnail">
+                            <img class="imageURL">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -40,7 +39,7 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!--<script src="/js/jquery.min.js"></script>-->
-	<script src="/js/main.js"></script>
+	<script src="/js/bucket.js"></script>
 </body>
 
 </html>

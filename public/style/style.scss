@@ -77,13 +77,14 @@ body {
     letter-spacing: 2px;
 }
 .template{
-    display: none;
+    display: none !important;
 }
 .panel-default {
     border: 0px solid !important;
     margin-bottom: 5px !important;
 }
 .bucketItem {
+    user-select: none;
     cursor: pointer;
     border: 1px solid rgba($brand, 0) !important;
     position: relative;
@@ -113,8 +114,7 @@ body {
         }
     }
     &:active{
-        background: rgba($brand, 1);
-        color: white;
+        background: rgba($brand, 0.29);
         border: 1px solid rgba($brand, 1);
     }
     .arrow {

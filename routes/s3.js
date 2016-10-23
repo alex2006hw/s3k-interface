@@ -77,14 +77,11 @@ router.get('/bucket/all', function(req, res){
 });
 router.get('/bucket/:id', function(req, res){
 	let bucketId = req.params.id
-	// get one bucket and send the details back
-	// Bucket.findById(req.params.id, function(err, bucket){
-	// 	console.log('bucket: ', bucket)
-	// 	if (err){
-	// 		res.send(500)
-	// 	}
-	// 	res.status(200).send(bucket)
-	// })
+	res.render('bucket');
+});
+router.get('/file/bucket/:id', function(req, res){
+	let bucketId = req.params.id
+	console.log('bucketId: ', bucketId)
 	File.find({bucket: {$in: [bucketId]}}, function(err, files){
 		console.log('files: ', files)
 		if (err) {

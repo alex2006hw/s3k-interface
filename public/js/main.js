@@ -3,14 +3,14 @@ var currentBucket = localStorage.getItem('currentBucket');
 var currentFile;
 
 $(function () {
-    $('.file-upload-btn').change(uploadFile)
+    $('.file-upload-btn').change(uploadFile);
+    $('body').on('click', '.bucketItem', goToBucket)
     getBuckets()
 })
 function uploadFile(){
     console.log('trigger uploadFile')
     $('form.fileForm').trigger('submit')
     setTimeout(function(){
-        console.log('go')
         location.href='.';
     }, 20)
     // $('form.fileForm').submit(function (e) {
@@ -36,7 +36,18 @@ function createABucket(){
         console.log('currentBucket: ', currentBucket)
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
         // getBuckets()
+        setTimeout(function(){
+            location.href='.';
+        }, 20)
     }) 
+}
+function goToBucket(){
+    console.log('dd')
+    let bucketId = $(this).attr('data-index');
+    location.href='/s3/bucket/'+bucketId
+    // $.get('/s3/bucket/'+bucketId, function(data){
+    //     console.log('data: ', data)
+    // })
 }
 function getBuckets(){
     // $('.bucketItem').delete()

@@ -1,8 +1,8 @@
 'use strict';
 
-var mongoose = require('mongoose');
-
-var fileSchema = new mongoose.Schema({
+let mongoose = require('mongoose');
+let relationship = require("mongoose-relationship");
+let fileSchema = new mongoose.Schema({
     etag: String,
     bucket: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -10,6 +10,6 @@ var fileSchema = new mongoose.Schema({
     }]
 });
 
-var File = mongoose.model('File', fileSchema);
+let File = mongoose.model('File', fileSchema);
 
 module.exports = File;

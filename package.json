@@ -14,6 +14,7 @@
     "express": "~4.13.1",
     "flow": "^0.2.3",
     "mongoose": "^4.6.4",
+    "mongoose-relationship": "^0.1.5",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "underscore": "^1.8.3"
