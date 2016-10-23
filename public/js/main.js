@@ -39,7 +39,7 @@ function createABucket(){
         setTimeout(function(){
             location.href='.';
         }, 20)
-    }) 
+    })
 }
 function goToBucket(){
     console.log('dd')

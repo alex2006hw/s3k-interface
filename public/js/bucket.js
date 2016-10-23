@@ -54,15 +54,15 @@ function getFiles() {
     console.log('bucketId: ', bucketId)
     $.get('/s3/file/bucket/' + bucketId, function (files) {
         console.log('files from server: ', files)
-        let $newFileItem;
-        let filesData = files.map(function (file) {
-            $newFileItem = $('.fileItem.template').clone().attr('data-index', `${file._id}`);
-            $newFileItem.removeClass('template');
-            $newFileItem.find('.imageURL').attr('url', file.url);
-            return $newFileItem;
-        })
-        console.log('filesData: ', filesData)
-        $('.fileList').append(filesData)
+        // let $newFileItem;
+        // let filesData = files.map(function (file) {
+        //     $newFileItem = $('.fileItem.template').clone().attr('data-index', `${file._id}`);
+        //     $newFileItem.removeClass('template');
+        //     $newFileItem.find('.imageURL').attr('url', file.url);
+        //     return $newFileItem;
+        // })
+        // console.log('filesData: ', filesData)
+        // $('.fileList').append(filesData)
     })
 }
 function getBucketFiles(bucketId) {
