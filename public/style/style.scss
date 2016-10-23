@@ -17,7 +17,7 @@ body {
     padding: 10px;
     font-weight: 500;
     box-shadow: 0px 0px 2px 0px rgba($black, 0.5);
-    #logo {
+    .logo {
         float: right;
         font-weight: 100;
         padding-right: 10px;
@@ -62,7 +62,7 @@ body {
             }
         }
     }
-    input[type=file]#file-upload-btn {
+    input[type=file].file-upload-btn {
         display: none;
     }
     label {

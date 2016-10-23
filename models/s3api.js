@@ -35,7 +35,7 @@ let configPath = path.join(__dirname, '..', "config.json");
 				etag: ETag
 			});
 			file.save(function(err, favedFile) {
-				res.send(favedFile)
+				res.json(favedFile)
 			});
  		})
  };
