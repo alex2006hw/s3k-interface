@@ -98,16 +98,31 @@ router.get('/bucket/:id', function(req, res){
 	res.render('bucket');
 });
 router.get('/file/bucket/:id', function(req, res){
-	let bucketId = req.params.id
-	console.log('bucketId: ', bucketId)
-	File.find({bucket: {$in: [bucketId]}}, function(err, files){
-		console.log('files: ', files)
-		if (err) {
-			return res.sendStatus(200)
-		}
-		res.status(200).send(files)
-	})
-});
+	console.log('===========')
+	console.log('1.api list bucketId: ', bucketId)
+	var params = {
+	  Bucket: "s3://" + req.params.id,
+	  Delimiter: 'STRING_VALUE',
+	  EncodingType: 'url',
+	  Marker: 'STRING_VALUE',
+	  MaxKeys: 0,
+	  Prefix: 'STRING_VALUE',
+	  RequestPayer: 'requester'
+	};
+	console.log('2.api list Objects params: ', params)
+
+	s3.listObjects(params, function(err, data) {
+		console.log('1.listObjects data: ', data)
+	  if (err) {
+		  console.log(err, err.stack);
+	  	} // an error occurred
+	  else    {
+		  console.log('2.api listObjects data: ',data);
+		  res.status(200).send(data)          // successful response
+	  	}
+	}); // listObjects
+}); // router.get
+
 router.delete('/bucket/:id', function(req, res){
 	// get one bucket and send the details back
 	Bucket.remove({_id: req.params.id}, function(err, good){
