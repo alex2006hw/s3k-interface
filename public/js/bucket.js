@@ -60,7 +60,8 @@ function getFiles() {
         let filesData = files.Contents.map(function (file) {
             $newFileItem = $('.fileItem.template').clone().attr('data-index', `${file.Key}`);
             $newFileItem.removeClass('template');
-            $newFileItem.find('.imageURL').attr('url', file.url);
+            $newFileItem.find('.filename').text(file.Key)
+            // $newFileItem.find('.imageURL').attr('url', file.url);
             return $newFileItem;
         })
         console.log('filesData: ', filesData)

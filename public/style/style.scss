@@ -83,7 +83,7 @@ body {
     border: 0px solid !important;
     margin-bottom: 5px !important;
 }
-.bucketItem {
+.bucketItem, .fileItem {
     user-select: none;
     cursor: pointer;
     border: 1px solid rgba($brand, 0) !important;
@@ -91,6 +91,9 @@ body {
     overflow: hidden;
     text-transform: uppercase;
     .bucketname {
+        font-weight: 700;
+    }
+    .filename {
         font-weight: 700;
     }
     .filenum {
