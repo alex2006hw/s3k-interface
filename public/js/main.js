@@ -11,7 +11,7 @@ function uploadFile(){
     $('form.fileForm').trigger('submit');
     setTimeout(function(){
         location.href='.';
-    }, 0)
+    }, 10)
     // $('form.fileForm').submit(function (e) {
     //     e.preventDefault()
     //     var formData = new FormData();
@@ -34,7 +34,7 @@ function createABucket(){
         currentBucket = data
         console.log('currentBucket: ', currentBucket)
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
-        getBuckets()
+        // getBuckets()
     }) 
 }
 function getBuckets(){
