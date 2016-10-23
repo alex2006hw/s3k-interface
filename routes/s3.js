@@ -99,7 +99,7 @@ router.get('/bucket/:id', function(req, res){
 });
 router.get('/file/bucket/:id', function(req, res){
 	console.log('===========')
-	console.log('1.api list bucketId: ', bucketId)
+
 	var params = {
 	  Bucket: "s3://" + req.params.id,
 	  Delimiter: 'STRING_VALUE',
