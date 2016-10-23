@@ -8,10 +8,10 @@ $(function () {
 })
 function uploadFile(){
     console.log('trigger uploadFile')
-    $('form.fileForm').trigger('submit');
-    setTimeout(function(){
-        location.href='.';
-    }, 10)
+    $('form.fileForm').trigger('submit')
+    // setTimeout(function(){
+    //     location.href='.';
+    // }, 10)
     // $('form.fileForm').submit(function (e) {
     //     e.preventDefault()
     //     var formData = new FormData();
