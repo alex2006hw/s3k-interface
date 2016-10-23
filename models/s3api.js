@@ -8,6 +8,8 @@ let configPath = path.join(__dirname, '..', "config.json");
 
  AWS.config.loadFromPath(configPath);
  exports.s3 = function(req, res) {
+	 console.log('req.url!!!!: ',req.url)
+	 console.log('req.url!!!!:')
  	var s3 = new AWS.S3(),
  		file = req.file,
  		result = {
@@ -32,7 +34,8 @@ let configPath = path.join(__dirname, '..', "config.json");
  			}
 			 var ETag = data.ETag.split('"')[1]
 			 let file = new File({
-				etag: ETag
+				url: ETag,
+				bucket: 'bucket'
 			});
 			file.save(function(err, favedFile) {
 				res.json(favedFile)
