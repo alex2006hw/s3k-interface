@@ -115,10 +115,12 @@ router.get('/bucket/:id', function(req, res){
 	let bucketId = req.params.id
 	res.render('bucket');
 });
-router.get('/file/bucket/:id', function(req, res){
-
+router.get('/file/bucket/:data', function(req, res){
+	let bucketName = req.params.split('@')[0]
+	let owenderId = req.params.split('@')[1]
 	var params = {
-	  Bucket: req.params.id, /* required */
+	  Bucket: bucketName,
+	  Delimiter: 'STRING_VALUE',
 	  EncodingType: 'url',
 	};
 
@@ -136,15 +138,17 @@ router.get('/file/bucket/:id', function(req, res){
 	}); // listObjects
 }); // router.get
 
-router.delete('/bucket/:id', function(req, res){
+router.delete('/bucket/:data', function(req, res){
 	// get one bucket and send the details back
-	Bucket.remove({_id: req.params.id}, function(err, good){
-		console.log('good')
-		if (err){
-			res.send(500)
-		}
-		res.status(200).send('good')
-	})
+	let bucketName = req.params.split('@')[0]
+	let owenderId = req.params.split('@')[1]
+	// Bucket.remove({_id: req.params.id}, function(err, good){
+	// 	console.log('good')
+	// 	if (err){
+	// 		res.send(500)
+	// 	}
+	// 	res.status(200).send('good')
+	// })
 });
 
 

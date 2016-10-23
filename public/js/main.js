@@ -34,6 +34,7 @@ function createABucket(){
     $.post('/s3/bucket/'+bucketName, function(data){
         currentBucket = data
         console.log('currentBucket: ', currentBucket)
+        console.log('currentBucket')
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
         // getBuckets()
         setTimeout(function(){
@@ -44,7 +45,8 @@ function createABucket(){
 function goToBucket(){
     console.log('dd')
     let bucketId = $(this).attr('data-index');
-    location.href='/s3/bucket/'+bucketId
+    let ownerId = $(this).attr('data-ownerId');
+    location.href='/s3/bucket/'+bucketId+'@'+ownerId
     // $.get('/s3/bucket/'+bucketId, function(data){
     //     console.log('data: ', data)
     // })
@@ -52,11 +54,15 @@ function goToBucket(){
 function getBuckets(){
     // $('.bucketItem').delete()
     $.get('/s3/bucket/all', function(buckets){
+        console.log('buckets: ', buckets)
+        let owerId = buckets.Owner.ID;
+        console.log('owerId: ', owerId)
         buckets = buckets.Buckets;
         console.log('buckets: ', buckets)
         let $newBucketItem;
         let bucketsData = buckets.map(function(bucket) {
-            $newBucketItem = $('.bucketItem.template').clone().attr('data-index', `${bucket.Name}`);
+            $newBucketItem = $('.bucketItem.template').clone().attr('data-index', `${bucket.Name}`)
+            $newBucketItem.attr('data-ownerId', `${owerId}`);
             $newBucketItem.removeClass('template');
             $newBucketItem.find('.panel-body .bucketname').text(bucket.Name);
             // $newBucketItem.find('.panel-body .filenum').text(bucket.files.length+' files');

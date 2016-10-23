@@ -1,8 +1,11 @@
 localStorage.clear()
 var currentBucket = localStorage.getItem('currentBucket');
 var currentFile;
-let bucketId = window.location.pathname.split('/')
-bucketId = bucketId[bucketId.length - 1]
+let urlData  = window.location.pathname.split('/')
+urlData = urlData[urlData.length - 1].split('@')
+console.log("urlData: ", urlData)
+let bucketId = urlData[0]; 
+let ownerId = urlData[1];
 $(function () {
     $('.file-upload-btn').change(uploadFile);
     $('body').on('click', '.bucketItem', goToBucket)
@@ -51,7 +54,6 @@ function goToBucket() {
 }
 function getFiles() {
     // $('.bucketItem').delete()
-    console.log('bucketId: ', bucketId)
     $.get('/s3/file/bucket/' + bucketId, function (files) {
         console.log('files from server: ', files)
         // let $newFileItem;
@@ -73,12 +75,8 @@ function getBucketFiles(bucketId) {
 }
 
 function deleteFolder() {
-    console.log('delete')
-    // $.delete('/s3/bucket'+bucketId, function(data){
-    //     console.log('successfully delete')
-    // })
     $.ajax({
-        url: '/s3/bucket/' + bucketId,
+        url: '/s3/bucket/' + bucketId + '@' + ownerId,
         type: 'delete',
         success: function (response) {
             console.log('successfully delete')
