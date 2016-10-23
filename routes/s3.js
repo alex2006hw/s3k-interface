@@ -7,19 +7,18 @@ var express = require('express'),
 	multer = require('multer'),
 	http = require('http'),
 	path = require('path'),
-	router = express.Router();
+	router = express.Router(),
+	upload = require('../models/upload');
 
 var Bucket = require('../models/bucket');
 
-var upload = multer({
-    storage: multer.memoryStorage(),
-    limits: {
-        filesize: 1000000 * 10
-    }
+// var uploader = multer({
+//     storage: multer.memoryStorage()
+// });
+var uploader = multer({
+	dest: 'uploads/'
 });
 
-router.post('/file',upload.single('newFile'), function(req, res){
-  console.log('req.file: ', req.file);
-});
+router.post('/file', uploader.single('file-upload-btn'), upload.s3);
 
 module.exports = router;
