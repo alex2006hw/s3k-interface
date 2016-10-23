@@ -66,6 +66,15 @@ router.post('/bucket/:name', function(req, res){
 		res.json(favedBucket)
 	});
 });
+router.get('/bucket/all', function(req, res){
+	Bucket.find({}, function(err, buckets){
+		console.log('buckets: ', buckets)
+		if (err){
+			res.send(500)
+		}
+		res.status(200).send(buckets)
+	})
+});
 router.get('/bucket/:id', function(req, res){
 	let bucketId = req.params.id
 	// get one bucket and send the details back
@@ -94,14 +103,6 @@ router.delete('/bucket/:id', function(req, res){
 		res.status(200).send('good')
 	})
 });
-router.get('/bucket/all', function(req, res){
-	Bucket.find({}, function(err, buckets){
-		console.log('buckets: ', buckets)
-		if (err){
-			res.send(500)
-		}
-		res.status(200).send(buckets)
-	})
-});
+
 
 module.exports = router;

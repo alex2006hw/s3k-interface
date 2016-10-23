@@ -4,14 +4,15 @@ var currentFile;
 
 $(function () {
     $('.file-upload-btn').change(uploadFile)
-    // getBuckets()
+    getBuckets()
 })
 function uploadFile(){
     console.log('trigger uploadFile')
     $('form.fileForm').trigger('submit')
-    // setTimeout(function(){
-    //     location.href='.';
-    // }, 10)
+    setTimeout(function(){
+        console.log('go')
+        location.href='.';
+    }, 20)
     // $('form.fileForm').submit(function (e) {
     //     e.preventDefault()
     //     var formData = new FormData();
@@ -41,10 +42,15 @@ function getBuckets(){
     // $('.bucketItem').delete()
     $.get('/s3/bucket/all', function(buckets){
         console.log('buckets: ', buckets)
-        buckets.forEach(function(bucket){
-            let newBucketItem = $('.bucketItem .template').clone().html(bucket.name+' with '+bucket.files.length+' files').removeClass('template')
-            bucketsData.push(newBucketItem)
+        let $newBucketItem;
+        let bucketsData = buckets.map(function(bucket) {
+            $newBucketItem = $('.bucketItem.template').clone().attr('data-index', `${bucket._id}`);
+            $newBucketItem.removeClass('template');
+            $newBucketItem.find('.panel-body .bucketname').text(bucket.name);
+            $newBucketItem.find('.panel-body .filenum').text(bucket.files.length+' files');
+            return $newBucketItem;
         })
+        console.log('bucketsData: ', bucketsData)
         $('.bucketList').append(bucketsData)
     }) 
 }

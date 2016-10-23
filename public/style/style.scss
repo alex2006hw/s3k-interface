@@ -5,14 +5,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: $gray !important;
   height: 100%;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .navbar-a{
+    z-index: 1;
     background: white;
     position: fixed;
     top: 0px;
     left: 0px;
+    right:0px;
     width: 100%;
     padding: 10px;
     font-weight: 500;
@@ -69,7 +71,57 @@ body {
         margin-bottom: 0px;
     }
 }
-
+.title {
+    font-weight: 200 !important;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
 .template{
     display: none;
+}
+.panel-default {
+    border: 0px solid !important;
+    margin-bottom: 5px !important;
+}
+.bucketItem {
+    cursor: pointer;
+    border: 1px solid rgba($brand, 0) !important;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    .bucketname {
+        font-weight: 700;
+    }
+    .filenum {
+        float: right;
+        position: relative;
+        transition: .2s all ease-in-out;
+    }
+    &:hover{
+        color: darken($brand, 20%);
+        background: rgba($brand, 0.09);
+        // color: white;
+        border: 1px solid rgba($brand, 1) !important;
+        .arrow {
+            position: absolute;
+            right: 10px;
+            top: 15px;
+        }
+        .filenum {
+            right: 20px;
+            transition: .2s all ease-in-out;
+        }
+    }
+    &:active{
+        background: rgba($brand, 1);
+        color: white;
+        border: 1px solid rgba($brand, 1);
+    }
+    .arrow {
+        
+        transition: .2s all ease-in-out;
+        position: absolute;
+        right: -15px;
+        top: 15px;
+    }
 }
