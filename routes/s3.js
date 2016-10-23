@@ -73,14 +73,14 @@ router.post('/bucket/:name', function(req, res){
 	var params = {
 		  Bucket: bucketName, /* required */
 		  ACL: 'public-read',
-		  CreateBucketConfiguration: {
-		    LocationConstraint: 'us-west-1'
-		  },
-		  GrantFullControl: 'true',
-		  GrantRead: 'true',
-		  GrantReadACP: 'true',
-		  GrantWrite: 'true',
-		  GrantWriteACP: 'true'
+		//   CreateBucketConfiguration: {
+		//     LocationConstraint: 'us-west-1'
+		//   },
+		//   GrantFullControl: 'true',
+		//   GrantRead: 'true',
+		//   GrantReadACP: 'true',
+		//   GrantWrite: 'true',
+		//   GrantWriteACP: 'true'
 	};
 s3.createBucket(params, function(err, data) {
   if (err) console.log('1.s3 api createBucket err: ',err,' stack: ', err.stack); // an error occurred
