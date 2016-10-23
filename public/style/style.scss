@@ -62,11 +62,10 @@ body {
             }
         }
     }
-}
-
-#main {
-    .colum {
-        background: black;
-        
+    input[type=file]#file-upload-btn {
+        display: none;
+    }
+    label {
+        margin-bottom: 0px;
     }
 }
