@@ -68,16 +68,34 @@ router.post('/file', uploader.single('newFile'), s3api.s3);
 // bucket
 
 router.post('/bucket/:name', function(req, res){
-	// create bucket and send the name back
-	console.log(req.params.name)
+
 	let bucketName = req.params.name
-	let bucket = new Bucket({
-		name: bucketName
-	});
-	bucket.save(function(err, favedBucket) {
-		console.log('favedBucket: ', favedBucket)
-		res.json(favedBucket)
-	});
+	var params = {
+		  Bucket: bucketName, /* required */
+		  ACL: 'public-read',
+		  CreateBucketConfiguration: {
+		    LocationConstraint: 'us-west-1'
+		  },
+		  GrantFullControl: 'true',
+		  GrantRead: 'true',
+		  GrantReadACP: 'true',
+		  GrantWrite: 'true',
+		  GrantWriteACP: 'true'
+	};
+s3.createBucket(params, function(err, data) {
+  if (err) console.log('1.s3 api createBucket err: ',err,' stack: ', err.stack); // an error occurred
+  else     console.log('2.s3 api createBucket: ',data);           // successful response
+});
+	// // create bucket and send the name back
+	// console.log(req.params.name)
+	//
+	// let bucket = new Bucket({
+	// 	name: bucketName
+	// });
+	// bucket.save(function(err, favedBucket) {
+	// 	console.log('favedBucket: ', favedBucket)
+	// 	res.json(favedBucket)
+	// });
 });
 
 router.get('/bucket/all', (req, res) => {
