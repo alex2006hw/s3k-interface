@@ -67,13 +67,21 @@ router.post('/bucket/:name', function(req, res){
 	});
 });
 router.get('/bucket/:id', function(req, res){
+	let bucketId = req.params.id
 	// get one bucket and send the details back
-	Bucket.findById(req.params.id, function(err, bucket){
-		console.log('bucket: ', bucket)
-		if (err){
+	// Bucket.findById(req.params.id, function(err, bucket){
+	// 	console.log('bucket: ', bucket)
+	// 	if (err){
+	// 		res.send(500)
+	// 	}
+	// 	res.status(200).send(bucket)
+	// })
+	File.find({bucket: {$in: [bucketId]}}, function(err, files){
+		console.log('files: ', files)
+		if (err) {
 			res.send(500)
 		}
-		res.status(200).send(bucket)
+		res.status(200).send(files)
 	})
 });
 router.delete('/bucket/:id', function(req, res){

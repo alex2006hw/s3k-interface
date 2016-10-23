@@ -5,7 +5,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: $gray !important;
   height: 100%;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .navbar-a{
@@ -68,4 +68,8 @@ body {
     label {
         margin-bottom: 0px;
     }
+}
+
+.template{
+    display: none;
 }
