@@ -15,7 +15,7 @@ function uploadFile() {
     console.log('trigger uploadFile')
     $('form.fileForm').trigger('submit')
     setTimeout(function () {
-        location.href = '/s3/bucket/'+bucketId;
+        location.href = '/s3/bucket/'+bucketId+'@'+ownerId;
     }, 20)
     // $('form.fileForm').submit(function (e) {
     //     e.preventDefault()
