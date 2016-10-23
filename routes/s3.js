@@ -116,8 +116,7 @@ router.get('/bucket/:id', function(req, res){
 	res.render('bucket');
 });
 router.get('/file/bucket/:data', function(req, res){
-	let bucketName = req.params.split('@')[0]
-	let owenderId = req.params.split('@')[1]
+	let bucketName = req.params.data
 	var params = {
 	  Bucket: bucketName,
 	  Delimiter: 'STRING_VALUE',
