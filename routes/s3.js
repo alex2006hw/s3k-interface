@@ -118,17 +118,13 @@ router.get('/bucket/:id', function(req, res){
 router.get('/file/bucket/:id', function(req, res){
 
 	var params = {
-	  Bucket: req.params.id,
-	  Delimiter: 'STRING_VALUE',
+	  Bucket: req.params.id, /* required */
 	  EncodingType: 'url',
-	  Marker: 'STRING_VALUE',
-	  MaxKeys: 0,
-	  Prefix: 'STRING_VALUE',
-	  RequestPayer: 'requester'
 	};
+
 	console.log('2.api list Objects params: ', params)
 
-	s3.listObjects(params, function(err, data) {
+	s3.listObjectsV2(params, function(err, data) {
 		console.log('1.listObjects data: ', data)
 	  if (err) {
 		  console.log(err, err.stack);
