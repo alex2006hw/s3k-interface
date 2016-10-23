@@ -41,7 +41,7 @@ function createABucket() {
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
         // getFiles()
         setTimeout(function () {
-            // location.href = '.';
+            location.href = '.';
         }, 20)
     })
 }
