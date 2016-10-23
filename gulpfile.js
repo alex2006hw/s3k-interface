@@ -9,28 +9,28 @@ const plumber = require('gulp-plumber');
 const react = require('gulp-react');
 const babel = require('gulp-babel');
 
-gulp.task('default', ['js', 'css', 'watch']);
+gulp.task('default', ['css', 'watch']);
 
 gulp.task('watch', function () {
     gulp.watch('public/**/*.scss', ['css']);
-    gulp.watch('public/**/*.jsx', ['js']);
+    // gulp.watch('public/**/*.jsx', ['js']);
 });
 
-gulp.task('js', ['clean:js'], function () {
-    return gulp.src(['public/js/**/*.jsx'])
-        .pipe(sourcemaps.init())
-        .pipe(plumber())
-        .pipe(react())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('public/js'));
-});
+// gulp.task('js', ['clean:js'], function () {
+//     return gulp.src(['public/js/**/*.jsx'])
+//         .pipe(sourcemaps.init())
+//         .pipe(plumber())
+//         .pipe(react())
+//         .pipe(sourcemaps.write())
+//         .pipe(gulp.dest('public/js'));
+// });
 
-gulp.task('clean:js', function () {
-    return gulp.src('public/js/**/*.js', {
-        read: false
-    })
-        .pipe(rimraf());
-});
+// gulp.task('clean:js', function () {
+//     return gulp.src('public/js/**/*.js', {
+//         read: false
+//     })
+//         .pipe(rimraf());
+// });
 
 
 gulp.task('css', ['clean:css'], function () {

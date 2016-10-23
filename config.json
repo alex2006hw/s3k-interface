@@ -1,1 +1,6 @@
-{ "accessKeyId": "akid", "secretAccessKey": "secret", "region": "us-east-1" }
+{
+    "accessKeyId": "accessKey1", "secretAccessKey": "verySecretKey1",
+    "endpoint": "localhost:8000",
+    "sslEnabled": false,
+    "s3ForcePathStyle": true
+}

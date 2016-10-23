@@ -2,21 +2,34 @@
 <html>
 
 <head>
-    <title>S3 GUI</title>
-    <link rel='stylesheet' href='/style/style.css' />
-    <!-- <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <script src="https://unpkg.com/react@15/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0-alpha1/JSXTransformer.js"></script>
+	<title>S3 GUI</title>
+	<link rel='stylesheet' href='/style/style.css' />
+	<!-- <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<!--<script src="https://unpkg.com/react@15/dist/react.js"></script>-->
+	<!--<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0-alpha1/JSXTransformer.js"></script>-->
 </head>
 
 <body>
-    <span id="navbar"></span>
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <span id="main"></span>
-    <script type="text/jsx" src="/js/main.js"></script>
+	<h1>Express upload to Amazon S3</h1>
+	<p>Test page for <code>express-upload-amazon-s3</code>
+		<h2>Upload Single File</h2>
+		<form method="post" name="form1" action="/upload" enctype="multipart/form-data">
+			<fieldset>
+				<legend>Upload single File</legend>
+				<input type="file" name="singleFile" />
+			</fieldset>
+			<div class="actions">
+				<button type="submit" class="btn primary">Upload</button>
+				<button type="button" class="btn cancel">Cancel  </button>
+			</div>
+		</form>
+	</p>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 
 </html>
