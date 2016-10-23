@@ -52,13 +52,14 @@ function goToBucket(){
 function getBuckets(){
     // $('.bucketItem').delete()
     $.get('/s3/bucket/all', function(buckets){
+        buckets = buckets.Buckets;
         console.log('buckets: ', buckets)
         let $newBucketItem;
         let bucketsData = buckets.map(function(bucket) {
-            $newBucketItem = $('.bucketItem.template').clone().attr('data-index', `${bucket._id}`);
+            $newBucketItem = $('.bucketItem.template').clone().attr('data-index', `${bucket.Name}`);
             $newBucketItem.removeClass('template');
-            $newBucketItem.find('.panel-body .bucketname').text(bucket.name);
-            $newBucketItem.find('.panel-body .filenum').text(bucket.files.length+' files');
+            $newBucketItem.find('.panel-body .bucketname').text(bucket.Name);
+            // $newBucketItem.find('.panel-body .filenum').text(bucket.files.length+' files');
             return $newBucketItem;
         })
         console.log('bucketsData: ', bucketsData)
