@@ -4,7 +4,7 @@ var currentFile;
 
 $(function () {
     $('.file-upload-btn').change(uploadFile)
-    getBuckets()
+    // getBuckets()
 })
 function uploadFile(){
     console.log('trigger uploadFile')

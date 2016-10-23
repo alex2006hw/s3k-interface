@@ -79,7 +79,7 @@ router.get('/bucket/:id', function(req, res){
 	File.find({bucket: {$in: [bucketId]}}, function(err, files){
 		console.log('files: ', files)
 		if (err) {
-			return res.sendStatus(500)
+			return res.sendStatus(200)
 		}
 		res.status(200).send(files)
 	})
