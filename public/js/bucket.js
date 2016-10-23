@@ -55,16 +55,16 @@ function goToBucket() {
 function getFiles() {
     // $('.bucketItem').delete()
     $.get('/s3/file/bucket/' + bucketId, function (files) {
-        console.log('files from server: ', files)
-        // let $newFileItem;
-        // let filesData = files.map(function (file) {
-        //     $newFileItem = $('.fileItem.template').clone().attr('data-index', `${file._id}`);
-        //     $newFileItem.removeClass('template');
-        //     $newFileItem.find('.imageURL').attr('url', file.url);
-        //     return $newFileItem;
-        // })
-        // console.log('filesData: ', filesData)
-        // $('.fileList').append(filesData)
+        console.log('files from server: ', files.Contents)
+        let $newFileItem;
+        let filesData = files.Contents.map(function (file) {
+            $newFileItem = $('.fileItem.template').clone().attr('data-index', `${file.Key}`);
+            $newFileItem.removeClass('template');
+            $newFileItem.find('.imageURL').attr('url', file.url);
+            return $newFileItem;
+        })
+        console.log('filesData: ', filesData)
+        $('.fileList').append(filesData)
     })
 }
 function getBucketFiles(bucketId) {
