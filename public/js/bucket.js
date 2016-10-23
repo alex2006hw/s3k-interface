@@ -12,7 +12,7 @@ function uploadFile() {
     console.log('trigger uploadFile')
     $('form.fileForm').trigger('submit')
     setTimeout(function () {
-        location.href = '.';
+        location.href = '/s3/bucket/'+bucketId;
     }, 20)
     // $('form.fileForm').submit(function (e) {
     //     e.preventDefault()
@@ -38,7 +38,7 @@ function createABucket() {
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
         // getFiles()
         setTimeout(function () {
-            location.href = '.';
+            // location.href = '.';
         }, 20)
     })
 }
@@ -70,4 +70,19 @@ function getBucketFiles(bucketId) {
         console.log('data: ', data)
         return data
     })
+}
+
+function deleteFolder() {
+    console.log('delete')
+    // $.delete('/s3/bucket'+bucketId, function(data){
+    //     console.log('successfully delete')
+    // })
+    $.ajax({
+        url: '/s3/bucket/' + bucketId,
+        type: 'delete',
+        success: function (response) {
+            console.log('successfully delete')
+            history.back()
+        }
+    });
 }

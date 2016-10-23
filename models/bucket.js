@@ -11,6 +11,7 @@ let bucketSchema = new mongoose.Schema({
     infos: Object
 });
 
+
 let Bucket = mongoose.model('Bucket', bucketSchema);
 
 module.exports = Bucket;
