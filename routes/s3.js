@@ -139,13 +139,15 @@ router.get('/file/bucket/:data', function(req, res){
 
 router.delete('/bucket/:data', function(req, res){
 	// get one bucket and send the details back
-	let bucketName = req.params.split('@')[0]
-	let ownerId = req.params.split('@')[1]
+	let bucketName = req.params.data.split('@')[0]
+	let ownerId = req.params.data.split('@')[1]
 
-	console.log('1.s3 api deleteBucket called')
 	var params = {
   		Bucket: bucketName  /* required */
 		};
+
+	console.log('1.s3 api deleteBucket called')
+
 s3.deleteBucket(params, function(err, data) {
   if (err) { console.log('2.s3 api deleteBucket err: ', err,' stack: ', err.stack); res.send(500) } // an error occurred
   else    { console.log(data); res.status(200).send('good') }           // successful response

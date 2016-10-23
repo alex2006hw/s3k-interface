@@ -4,7 +4,7 @@ var currentFile;
 let urlData  = window.location.pathname.split('/')
 urlData = urlData[urlData.length - 1].split('@')
 console.log("urlData: ", urlData)
-let bucketId = urlData[0]; 
+let bucketId = urlData[0];
 let ownerId = urlData[1];
 $(function () {
     $('.file-upload-btn').change(uploadFile);
