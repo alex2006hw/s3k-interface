@@ -1,7 +1,7 @@
 localStorage.clear()
 var currentBucket = localStorage.getItem('currentBucket');
 var currentFile;
-let urlData  = window.location.pathname.split('/')
+let urlData = window.location.pathname.split('/')
 urlData = urlData[urlData.length - 1].split('@')
 console.log("urlData: ", urlData)
 let bucketId = urlData[0];
@@ -15,7 +15,7 @@ function uploadFile() {
     console.log('trigger uploadFile')
     $('form.fileForm').trigger('submit')
     setTimeout(function () {
-        location.href = '/s3/bucket/'+bucketId+'@'+ownerId;
+        location.href = '/s3/bucket/' + bucketId + '@' + ownerId;
     }, 20)
     // $('form.fileForm').submit(function (e) {
     //     e.preventDefault()
@@ -41,7 +41,7 @@ function createABucket() {
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
         // getFiles()
         setTimeout(function () {
-            location.href = '.';
+            location.reload();
         }, 20)
     })
 }

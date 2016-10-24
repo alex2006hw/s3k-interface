@@ -22,7 +22,7 @@ let configPath = path.join(__dirname, '..', "config.json");
  		},
  		function(err, data) { // Upload file to S3
  			s3.putObject({
- 				Bucket: 'testing', //Bucket Name
+ 				Bucket: 's3', //Bucket Name
  				Key: file.originalname, //Upload File Name, Default the original name
  				Body: data
  			}, this);

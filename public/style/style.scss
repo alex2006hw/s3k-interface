@@ -3,7 +3,7 @@ $gray: rgba(0,0,0,0.04);
 $black: rgba(0,0,0,0.88);
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: $gray !important;
+  background: rgba($brand, 0.1) !important;
   height: 100%;
   padding-top: 40px;
 }

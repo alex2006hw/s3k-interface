@@ -30,15 +30,16 @@ function uploadFile(){
     // })
 }
 function createABucket(){
-    var bucketName = prompt("input your prefer folder name: ","folder name");
+    var bucketName = prompt("input your prefer bucket name: ","bucket name");
     $.post('/s3/bucket/'+bucketName, function(data){
         currentBucket = data
         console.log('currentBucket: ', currentBucket)
         console.log('currentBucket')
         localStorage.setItem('currentBucket', JSON.stringify(currentBucket))
         // getBuckets()
-        setTimeout(function(){
-            location.href='.';
+        setTimeout(function () {
+            console.log('refresh!!!')
+            location.reload();
         }, 20)
     })
 }
